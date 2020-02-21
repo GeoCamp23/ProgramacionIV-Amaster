@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>Tarea Conversores</title>
+    <title>Tarea conversores</title>
 </head>
 <body>
     <form method="post" id="frmConversores">
         <div class="container">
-            <div class="row row-cols-3">
+            <div class="row row-cols-2">
                 <div class="col text-center bg-info text-white">
                     Conversores
                 </div>
             </div>
-            <div class="row row-cols-3 p-2">
+            <div class="row row-cols-4 p-2">
                 <div class="col">
-                    Eliga un conversor:
-                    
+                    Elige un conversor:
                     <select id="cboConvertir" class="form-control" onchange="seleccionar()">
+                        <option value="seleccion">Seleccionar</option>
                         <option value="moneda">Moneda</option>
                         <option value="peso">Peso</option>
                         <option value="almacenamiento">Almacenamiento</option>
@@ -28,7 +28,7 @@
                     </select>
                 </div>
             </div>
-            <div class="row row-cols-3 p-2">
+            <div class="row row-cols-4 p-2">
                 <div class="col">
                     De:
                     <select id="cboDe" class="form-control">
@@ -40,15 +40,15 @@
                     </select>
                 </div>
             </div> 
-            <div class="row row-cols- p-2">
+            <div class="row row-cols-4 p-2">
                 <div class="col text-center">
                     <input type="text" required="required" pattern="[0-9.]{1,}" placeholder="Cantidad" id="txtCantidadConversor" class="form-control">
                 </div>
                 <div class="col text-center">
-                    <p class="bg-success text-black" id="lblRespuesta">Respuesta:</p>
+                    <p class="bg-success text-white" id="lblRespuesta">Respuesta:</p>
                 </div>
             </div>
-            <div class="row row-cols-3 p-2">
+            <div class="row row-cols-2 p-2">
                     <input type="submit" id="btnConvertir" value="Convertir" class="btn btn-primary">
                 </div>
             </div>
