@@ -1,2 +1,0 @@
-# ProgramacionIV-Amaster
-tarea
