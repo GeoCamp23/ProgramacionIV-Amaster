@@ -2,7 +2,7 @@
     <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
         <div class="car-header">
             BUSQUEDA DOCENTES
-   
+
             <button type="button" id="btn-close-buscar-docentes" v-on:click="cerrarBuscarDocentes" class="close close-docentes" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -25,7 +25,7 @@
                     </tr>
                 </thead>
                 <tbody>
-   
+
                     <tr v-for="docentes in data_docentes" :key="docentes.id_Docente">
                         <td>{{ docentes.codigo }}</td>
                         <td>{{ docentes.nombre }}</td>
@@ -42,7 +42,7 @@
             </table>
         </div>
     </div>
-   </form>
-   </div>
-   
-   <script src="public/vistas/docentes/buscar-docentes.js"></script>
+</form>
+</div>
+
+<script src="public/vistas/docentes/buscar-docentes.js"></script>

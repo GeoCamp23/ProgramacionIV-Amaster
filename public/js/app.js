@@ -1,65 +1,24 @@
-var $ = el => document.querySelector(el);
-
-document.addEventListener("DOMContentLoaded", event => {
+function init() {
     
-    event.preventDefault();
+    $("[class*='mostrar']").click(function () {
 
-    let mostrarVista = document.getElementById('Alumno');
-
-    let mostrarVistaDocente = document.getElementById('Docente');
-
-    mostrarVista.addEventListener("click", e=>{
+        let modulo = $(this).data('modulo');
         
-        e.stopPropagation();
-        
-        let modulo = "alumnos";
+        console.log(modulo);
 
-        fetch('public/vistas/alumnos/alumnos.html').then( resp => resp.text()).then( resp => {
+        $(`#vista-${modulo}`).load(`public/vistas/${modulo}/${modulo}.html`, function () {
 
-            document.getElementById('vista-alumnos').innerHTML = resp;
-            let btnCerrar = $(".close");
-
-            btnCerrar.addEventListener("click", event => {
-
-                $(`#vista-${modulo}`).innerHTML = "";
+            $(`#close-${modulo}`).click(function () {
+                
+                $(`#vista-${modulo}`).hide( "puff", "slow" );
 
             });
 
-            let cuerpo = $("body"), script = document.createElement("script");
+        }).draggable().show( "scale", 1000 );
 
-            script.src = `public/vistas/Alumnos/${modulo}.js`;
-
-            cuerpo.appendChild(script);
-                
-        });
 
     });
 
-    mostrarVistaDocente.addEventListener("click", e=>{
-        
-        e.stopPropagation();
-        
-        let modulo = "docentes";
+}
 
-        fetch('public/vistas/alumnos/docentes.html').then( resp => resp.text()).then( resp => {
-
-            document.getElementById('vista-docentes').innerHTML = resp;
-            let btnCerrar = $(".close");
-
-            btnCerrar.addEventListener("click", event => {
-
-                $(`#vista-${modulo}`).innerHTML = "";
-
-            });
-
-            let cuerpo = $("body"), script = document.createElement("script");
-
-            script.src = `public/vistas/Alumnos/${modulo}.js`;
-
-            cuerpo.appendChild(script);
-                
-        });
-
-    });
-
-});
+init();
