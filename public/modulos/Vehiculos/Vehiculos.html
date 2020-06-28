@@ -1,0 +1,111 @@
+<form v-on:submit.prevent="guardarVehiculos" method="get" id="frmVehiculos" data-accion="nuevo">
+
+    <div class="card text-white bg-dark mb-4" style="min-width: 50rem;">
+        <div class="card-header text-center">
+            Vehiculos
+            <button type="button" id="close-Vehiculos" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="card-body">
+            <div class="row p-2">
+                <div class="col-4">
+                    MARCA
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="Vehiculos.marca" placeholder="KIA" class="form-control" onKeyUp="this.value=this.value.toUpperCase();" minlength="3">
+
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-4">
+                    MODELO
+                </div>
+                <div class="col-8">
+                    <input type="text" v-model="Vehiculos.modelo" placeholder="Picanto" class="form-control"  minlength="4">
+                </div>
+            </div>
+
+            <div class="row p-2">
+                <div class="col-4">
+                    AÑO
+                </div>
+                <div class="col-8">
+                    <input type="number" v-model="Vehiculos.year" placeholder="2015" class="form-control" maxlength="4">
+                </div>
+            </div>
+            <div class="row p-2"> 
+                <div class="col-12 text-center">
+                    <input id="btnGuardarVehiculos" type="submit" class="btn btn-outline-success text-white" value="Guardar">
+                    <input type="reset" class="btn btn-outline-warning text-white" value="Limpiar">
+                    <button v-on:click="buscarVehiculos()" type="button" class="btn btn-outline-dark mostrar-buscar-Vehiculos text-white" data-toggle="modal" data-target="#Vehiculos">
+                        Buscar
+                      </button>
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-12 text-center">
+                    <div class="alert alert-success" role="alert">
+                        {{ Vehiculos.msg }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<div class="modal fade" id="Vehiculos" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Busqueda de Vehiculos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="align-items: center !important;">
+          <form method="POST" id="frm-buscar-Vehiculos">
+            <div class="card text-white bg-dark mb-3" style="max-width: 48rem;">
+                <div class="car-header">
+                    BUSQUEDA DE VEHICULOS
+                </div>
+                <div class="card-body">
+                    <table id="tbl-buscar-Vehiculos" class="table-striped table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th colspan="5">
+                                    <input type="text" v-model="valor" v-on:keyup="buscarVehiculos" placeholder="Busque por marca, modelo o año" class="form-control">
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>MARCA</th>
+                                <th>MODELO</th>
+                                <th>AÑO</th>
+                                <th> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="Vehiculos in Vehiculoses" :key="Vehiculos.idVehiculo">
+                                <td>{{ Vehiculos.marca }}</td>
+                                <td>{{ Vehiculos.modelo }}</td>
+                                <td>{{ Vehiculos.year }}</td>
+                                <td>
+                                    <input v-on:click="verificacionEliminacion(Vehiculos.idVehiculo)" type="button" class="btn btn-outline-danger text-white" value="Delete">
+                                    <input v-on:click="modificarVehiculos(Vehiculos)" data-dismiss="modal" type="button" class="btn btn-outline-warning text-white" value="Update">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+        
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script src="./public/modulos/Vehiculos/Vehiculos.js"></script>
